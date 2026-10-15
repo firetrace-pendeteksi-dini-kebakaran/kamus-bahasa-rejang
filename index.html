@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kamus Bahasa Rejang & Aksara Kaganga</title>
 <meta name="description" content="Kamus digital Bahasa Rejang — 1.500+ kata, 5 dialek, aksara Kaganga, data BERENDO resmi Kemendikdasmen.">
+<link rel="manifest" href="/kamus-bahasa-rejang/manifest.json">
+<meta name="theme-color" content="#3D1A00">
+<link rel="icon" type="image/png" sizes="192x192" href="/kamus-bahasa-rejang/icons/icon-192.png">
+<link rel="apple-touch-icon" href="/kamus-bahasa-rejang/icons/icon-192.png">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Rejang&family=Poppins:wght@300;400;500;600;700&display=swap');
 :root{--coklat-tua:#3D1A00;--coklat:#7B3F00;--emas:#C8922A;--emas-muda:#F0C060;--krem:#FDF6E3;--putih:#FFF;--abu:#6B7280;--abu-muda:#F3F4F6;--merah:#DC2626;--hijau:#16A34A;}
@@ -2094,6 +2098,19 @@ cariKata();
 renderPanduan();
 setMode('huruf');
 
+</script>
+
+<script>
+// Daftarkan service worker PWA Kamus Rejang.
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/kamus-bahasa-rejang/sw.js", {
+      scope: "/kamus-bahasa-rejang/"
+    }).catch(error => {
+      console.error("PWA: service worker gagal didaftarkan", error);
+    });
+  });
+}
 </script>
 </body>
 </html>
